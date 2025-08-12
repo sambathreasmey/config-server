@@ -1,0 +1,15 @@
+spring:
+  config:
+    activate:
+      on-profile: docker
+  cloud:
+    config:
+      server:
+        vault:
+          host: vault-ac.sambathreasmey.site
+  rabbitmq:
+    host: rtr-rabbitmq
+eureka:
+  client:
+    service-url:
+      defaultZone: http://rtr-euroka-server:8761/eureka/

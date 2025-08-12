@@ -1,0 +1,41 @@
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  security:
+    user:
+      name: admin
+#      password: "{bcrypt}$2a$12$dqj9NbmjLhOTf.gnPNN/SeXSNq8kU17Abr0urToN0sZBNJVB3UcGC" #pwd
+      password: "qwer" #pwd
+  application:
+    name: config-server
+  profiles:
+    active: git,vault
+  cloud:
+    config:
+      server:
+        vault:
+          host: vault-ac.sambathreasmey.site
+          port: 443
+          scheme: https
+#          authentication: TOKEN
+          token: ---your vault token---
+          kv-version: 2
+          backend: secret
+          profile-separator: /
+        git:
+          uri: https://github.com/sambathreasmey/rtr-config-files.git
+          default-label: main
+          force-pull: true
+          search-paths: '/services/**'
+          clone-on-start: true
+          username: sambathreasmey
+          password: ---your github secret---
+#encrypt:
+#  key: "myverysecuredsecretkey"
+server:
+  port: 8888
