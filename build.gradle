@@ -25,7 +25,7 @@ jib {
         // For private registry authentication
         auth {
             username = "sambathreasmey"
-
+            password = "your_github_scret"
         }
     }
 }
